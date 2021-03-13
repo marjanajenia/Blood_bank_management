@@ -1,0 +1,2 @@
+{"fname":"rimi","lname":"ahmed","username":"doctor","gender":"female","address":"b.baria","password":"123","btype":"A+","email":"r@gmail.com"}
+{"fname":"rabbi","lname":"r","username":"rabbi","gender":"male","address":"akhaura","password":"45","btype":"O+","email":"k@gmail.com"}
