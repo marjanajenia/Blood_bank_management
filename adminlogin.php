@@ -1,18 +1,10 @@
 <?php
-
+    $username = $password ="";
     $usernameerr = $passworderr ="";
 
             if($_SERVER['REQUEST_METHOD'] == "POST") {
 
-                if(empty($_POST['username'])) {                    
-                    $usernameerr = "Please Fill up the Username!";
-                }
-
-                else if(empty($_POST['password'])) {                    
-                    $passworderr = "Please Fill up the password!";
-                }
-
-                else {
+                 {
                     $username = $_POST['username'];
                     $password = $_POST['password'];
 
@@ -52,13 +44,11 @@
 		<table>
 			<tr>
 				<td>Username:</td>
-				<td><input type="text" name="username" id="username"></td>
-				<?php echo $usernameerr; ?>
+				<td><input type="text" name="username" id="username" required></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="pass" name="password" id="password"></td>
-				<?php echo $passworderr; ?>
+				<td><input type="pass" name="password" id="password" required></td>
 			</tr>
 			<tr>
 				<td><input type="submit" name="login"value="login"></td>
