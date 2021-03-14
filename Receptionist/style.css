@@ -1,0 +1,31 @@
+#nav{
+	float: right;
+}
+
+#nav li{
+	display: inline-block;
+	margin: 10px;
+}
+
+.logo img{
+	float: left;
+	width: 150px;
+	height: auto;
+}
+
+header{
+	background-color: #322a2a;
+	height: 70px;
+	color: white;
+}
+
+a{
+	color: white;
+}
+
+footer{
+       clear: both;
+       text-align: center;
+       background-color:  #322a2a;
+       color: white;
+}
