@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <?php 
-      $firstnameerr = $lastnameerr = $usernameerr = $gendererr = $passworderr = $addresserr = $btypeerr = $emailerr = $notavailable = " " ;
+      $gendererr = $patternerrf = $patternerrl = $wrongemail = $notavailable = " " ;
 
 
  if($_SERVER['REQUEST_METHOD']=="POST"){
 
- 	           if(empty($_POST['fname'])) {
-                    $firstnameerr = "Please Fill up the firstname!";
-                }
+ 	            if(!preg_match("/^[a-zA-Z]*$/", ($_POST['fname']) )){
+                    $patternerrf = "only letter allowed in Firstname";
+              }
 
-                else if(empty($_POST['lname'])) {                    
-                    $lastnameerr = "Please Fill up the lastname!";
-                    
-                }
+              else if(!preg_match("/^[a-zA-Z]*$/", ($_POST['lname']) )){
+                    $patternerrl = "only letter allowed in lastname";
+              }
 
-                else if(empty($_POST['username'])) {                    
-                    $usernameerr = "Please Fill up the username!";
-                }
-
-                else if(empty($_POST['gender'])) {                    
+              else if(empty($_POST['gender'])) {                    
                     $gendererr = "Please Fill up the gender!";
                     
-                }
-
-                 else if(empty($_POST['password'])) {                    
-                    $passworderr = "Please Fill up the password!";
-                }
-
-                 else if(empty($_POST['address'])) {                    
-                    $addresserr = "Please Fill up the address!";
-                }
-                else if(empty($_POST['btype'])) {                    
-                    $btypeerr = "Please Fill up the bloodtype!";
-                }
-
-
-                else if(empty($_POST['email'])) {                    
-                    $emailerr = "Please Fill up the email!";
-                    
-                }
+              }
+              else if(!filter_var(($_POST['email']),FILTER_VALIDATE_EMAIL)){
+                  $wrongemail="invalid email";
+              }
 
                
     else
@@ -113,53 +94,51 @@
 <body>
 	<h1>LOG IN</h1>
 	<form action="" method="POST">
+     <table>
+      <tr>
+		    <td>First Name</td>
+		    <td><input type="text" id="fname"name="fname" required></td>
+		    <?php echo $patternerrf; ?>
+      </tr>
+      <tr>
+		    <td>Last Name</td>
+		    <td><input type="text" id="lname"name="lname" required></td>
+		    <?php echo $patternerrl; ?>
+      </tr>
+      <tr>
+		    <td>User Name</td>
+		    <td><input type="text" id="username"name="username"required></td>
+		    <?php echo $notavailable; ?>
+      </tr>
+      <tr>
+		    <td>Gender</td>
+		    <td><input type="radio" name="gender" id="male" value="male"/>Male
+          
+		    <input type="radio" name="gender"id="female" value="female"/>Female</td>
+        <?php echo $gendererr; ?>
+      </tr>
+      <tr> 
+		    <td>Address</td>
+		    <td><input type="text" id="address"name="address" required></td>
+      </tr>
+      <tr>
+        <td>Password</td>
+		    <td><input type="pass" id="password"name="password" required></td>
+      </tr>
+      <tr>
+		    <td>Blood type</td>
+		    <td><input type="text" id="btype"name="btype" required></td>
+      </tr>
+      <tr>
+		    <td>Email</td>
+		    <td><input type="email" id="email"name="email" required></td>
+		    <?php echo $wrongemail; ?>
+      </tr>
+      <tr>
+        <td><input type="submit" value="submit"></td>
+      </tr>
+    </table>
 
-		<label for="fname">First Name</label>
-		<input type="text" id="fname"name="fname">
-		<?php echo $firstnameerr; ?>
-
-		<br>
-
-		<label for="lname">Last Name</label>
-		<input type="text" id="lname"name="lname">
-		<?php echo $lastnameerr; ?>
-		<br>
-
-		<label for="username">User Name</label>
-		<input type="text" id="username"name="username">
-		<?php echo $usernameerr; echo $notavailable; ?>
-
-		<br>
-
-		<label>Gender</label>
-		<input type="radio" name="gender" id="male" value="male">
-		<label for="male">Male</label>
-		<input type="radio" name="gender"id="female" value="female">
-		<label for="female">Female</label>
-		<?php echo $gendererr; ?>
-		<br>
-
-		<label for="address">Address</label>
-		<input type="text" id="address"name="address">
-		<?php echo $addresserr; ?>
-		<br>
-
-		<label for="password">Password</label>
-		<input type="pass" id="password"name="password">
-		<?php echo $passworderr; ?>
-		<br>
-
-		<label for="btype">Blood type</label>
-		<input type="text" id="btype"name="btype">
-		<?php echo $btypeerr; ?>
-		<br>
-
-		<label for="email">Email</label>
-		<input type="email" id="email"name="email">
-		<?php echo $emailerr; ?>
-		<br>
-
-		<input type="submit" value="submit">
 
 	</form>
 
